@@ -18,10 +18,6 @@ namespace ProductOfConsecutiveFibNumbers
 			for (ulong i = 2; i <= prod; i++)
 			{
 				set.Add(set[(int)i - 1] + set[(int)i - 2]);
-				if (set[(int)i] > prod)
-				{
-					break;
-				}
 			}
 			var fibonacii = set.ToArray();
 
@@ -36,13 +32,18 @@ namespace ProductOfConsecutiveFibNumbers
 				for (int k = 0; k < fibonacii.Length; k++)
 				{
 					factorTwo = fibonacii[k];
-					var productValue = factorOne *factorTwo;
+					var productValue = factorOne * factorTwo;
 					if (productValue == prod)
 					{
 						result[0] = factorOne;
 						result[1] = factorTwo;
 						result[2] = 1;
 						return result;
+
+					}
+					else if (factorOne * factorTwo > prod)
+					{
+						break;
 					}
 				}
 			}
